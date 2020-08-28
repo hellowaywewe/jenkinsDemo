@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/jenkins_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://47.115.50.30:3306/jenkins_db?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
     username: root
