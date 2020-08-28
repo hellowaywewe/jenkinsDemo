@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+用户登陆界面
+<form method="post">
+    <table>
+        <tr>
+            <td>用户名:</td>
+            <td><input class="name" name="userName" type="text"></td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td><input class="pwd" name="userPwd" type="password"></td>
+        </tr>
+        <tr >
+            <td><input class="login" type="button" value="登录"></td>
+            <td><input class="register" type="button" value="注册"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+<script>
+    $(document).ready(function () {
+        $('.login').on('click', function () {
+            var name = $('.name').val();
+            var pwd = $('.pwd').val();
+            $.ajax({
+                url: '/doLogin',
+                method: 'post',
+                data: "userName=" + name + "&userPwd=" + pwd,
+                success: function (res) {
+                    console.log(res);
+                    window.location.href = "/loginSuccess.html";
+                },
+                error: function (err) {
+                    console.log(err)
+                    window.location.href = "/loginFail.html";
+                }
+            })
+        })
+
+       $('.register').on('click', function () {
+         window.location.href = "/register.html";
+        })
+    })
+</script>
+
+</html>

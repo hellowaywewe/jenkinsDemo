@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Register</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+新用户注册界面
+<form action="/userRegister" method="post">
+    <table>
+        <tr>
+            <td>用户名:</td>
+            <td><input class="name" name="userName" type="text"></td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td><input class="pwd" name="userPwd" type="password"></td>
+        </tr>
+        <tr >
+            <td><input class="register" type="button" value="注册"></td>
+        </tr>
+    </table>
+</form>
+</body>
+<script>
+    $(document).ready(function () {
+        $('.register').on('click', function () {
+            var name = $('.name').val();
+            var pwd = $('.pwd').val();
+            $.ajax({
+                url: '/doRegister',
+                method: 'post',
+                data: "userName=" + name + "&userPwd=" + pwd,
+                success: function (res) {
+                    console.log(res);
+                    window.location.href = "/userLogin";
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            })
+        })
+    })
+</script>
+</html>
